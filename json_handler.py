@@ -9,12 +9,12 @@ class PersonsJSONHandler:
         for person in persons:
             serialized.append(person.get_person_data())
 
-        with open(f'{name}.json', 'w') as json_file:
+        with open(f'generated_files/{name}.json', 'w') as json_file:
             json.dump(serialized, json_file)
 
     @staticmethod
     def read_from_json(name: str):
-        with open(f'{name}.json', "r") as json_file:
+        with open(f'generated_files/{name}.json', "r") as json_file:
             persons_data = json.load(json_file)
 
         print(persons_data)
