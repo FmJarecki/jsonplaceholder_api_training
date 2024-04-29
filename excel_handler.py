@@ -17,4 +17,4 @@ class PersonsExcelHandler:
             sheet[f"B{idx}"] = person_data['email']
             sheet[f"C{idx}"] = person_data['city']
 
-        workbook.save(filename=f'{name}.xlsx')
+        workbook.save(filename=f'generated_files/{name}.xlsx'))
