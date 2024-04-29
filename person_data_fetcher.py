@@ -22,8 +22,8 @@ class Person:
         self._name: str = self._set_name(person_data['name'])
         self._email: str = self._set_email(person_data['company']['name'])
         self._lng, self._lat = person_data['address']['geo']['lng'], person_data['address']['geo']['lat']
-        self._city: str = self.find_city()
-        self._country: str = self.find_country()
+        self._city: str = self._find_city()
+        self._country: str = self._find_country()
         
     def __str__(self):
         return f'name: {self._name}, email: {self._email}, city: {self._city}, country: {self._country}'
@@ -39,7 +39,7 @@ class Person:
         address_part = ''.join(char for char in company_name if char.isalpha())
         return f'{name_part}@{address_part}'
 
-    def find_country(self) -> str:
+    def _find_country(self) -> str:
         params = [
             ["lat", self._lat],
             ["lon", self._lng],
@@ -52,7 +52,7 @@ class Person:
         else:
             return 'No country found.'
 
-    def find_city(self) -> str:
+    def _find_city(self) -> str:
         params = [
             ["lat", self._lat],
             ["lon", self._lng]
